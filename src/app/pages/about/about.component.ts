@@ -1,46 +1,111 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, viewChild } from '@angular/core';
 import { AboutSectionComponent } from '../../components/about-section/about-section.component';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {
+  LucideAngularModule,
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  Code,
+  Layers,
+  Server,
+  GitBranch,
+  ShieldCheck,
+  Cpu,
+  Linkedin,
+  Github,
+  Twitter,
+  Globe,
+} from 'lucide-angular';
+
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [NgFor, AboutSectionComponent],
+  imports: [NgFor, AboutSectionComponent, LucideAngularModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
-export class AboutComponent {
-  personalInfo = [
-    { icon: 'mail', label: 'Email', value: 'mouzakitis.m89@gmail.com' },
-    { icon: 'phone', label: 'Phone', value: '+30 6982961433' },
-    { icon: 'map-pin', label: 'City', value: 'Evia' },
-    { icon: 'home', label: 'Address', value: 'Gavalas, Aliveri' },
-    { icon: 'calendar', label: 'Date of Birth', value: '18/08/1989' },
+export class AboutComponent implements AfterViewInit {
+  readonly aboutSection = viewChild.required<ElementRef>('aboutSection');
+
+  readonly User = User;
+  readonly Cpu = Cpu;
+
+  readonly personalInfo = [
+    { label: 'Email', value: 'mouzakitis.m89@gmail.com', icon: Mail },
+    { label: 'Phone', value: '+30 6982961433', icon: Phone },
+    { label: 'City', value: 'Evia', icon: MapPin },
+    { label: 'Address', value: 'Gavalas, Aliveri', icon: MapPin },
+    { label: 'Date of Birth', value: '18/08/1989', icon: Calendar },
   ];
-  techStack = [
+  readonly techStack = [
     {
       category: 'Frontend Development',
       skills: 'HTML5, CSS3, JavaScript, TypeScript, Angular, React.js, Next.js',
-    },
-    {
-      category: 'State Management & Data Fetching',
-      skills: 'Redux, Redux Toolkit, RTK Query, NgRx, RxJS',
+      icon: Code,
     },
     {
       category: 'Styling & UI Libraries',
       skills: 'Tailwind CSS, Bootstrap, Angular Material',
-    },
-    {
-      category: 'Testing & Quality Assurance',
-      skills:
-        'Jest (Unit Testing), Cypress (End-to-End Testing), Stryker (Mutation Testing)',
+      icon: Layers,
     },
     {
       category: 'CMS & Backend Technologies',
       skills: 'Magnolia CMS, Firebase, Node.js',
+      icon: Server,
     },
-    { category: 'Version Control & DevOps', skills: 'Git, GitHub, GitLab' },
+    {
+      category: 'State Management & Data Fetching',
+      skills: 'Redux, Redux Toolkit, RTK Query, NgRx, RxJS',
+      icon: GitBranch,
+    },
+    {
+      category: 'Testing & Quality Assurance',
+      skills:
+        'Jest (Unit Testing), Cypress (E2E Testing), Stryker (Mutation Testing)',
+      icon: ShieldCheck,
+    },
+    {
+      category: 'Version Control & DevOps',
+      skills: 'Git, GitHub, GitLab',
+      icon: GitBranch,
+    },
   ];
+  readonly icons = {
+    Linkedin: Linkedin,
+    Github: Github,
+    Twitter: Twitter,
+    Globe: Globe,
+  };
+  readonly socialLinks = [
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/your-profile',
+      icon: this.icons.Linkedin,
+    },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/your-username',
+      icon: this.icons.Github,
+    },
+    {
+      name: 'Twitter',
+      url: 'https://twitter.com/your-handle',
+      icon: this.icons.Twitter,
+    },
+    {
+      name: 'Medium',
+      url: 'https://medium.com/@yourusername',
+      icon: this.icons.Globe,
+    },
+  ];
+
   sectionsLeft = [
     {
       title: 'Education',
@@ -186,4 +251,26 @@ export class AboutComponent {
       ],
     },
   ];
+
+  ngAfterViewInit() {
+    const aboutSection = this.aboutSection();
+    if (aboutSection) {
+      gsap.fromTo(
+        aboutSection.nativeElement,
+        { autoAlpha: 0, y: 50 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: aboutSection.nativeElement,
+            start: 'top 85%',
+            end: 'top 10%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    }
+  }
 }

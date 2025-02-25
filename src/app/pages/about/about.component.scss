@@ -1,0 +1,12 @@
+section {
+  font-family: 'Inter', sans-serif;
+}
+
+.shadow-md {
+  border-left: 4px solid #4a90e2;
+}
+
+.about-item:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease-in-out;
+}

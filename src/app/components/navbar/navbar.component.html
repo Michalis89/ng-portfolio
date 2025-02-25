@@ -1,1 +1,14 @@
-<p>navbar works!</p>
+<nav class="bg-gray-900 text-white p-4 flex justify-between items-center">
+  <a href="/" class="text-xl font-bold">My Portfolio</a>
+  <div class="space-x-4">
+    <a
+      *ngFor="let link of navLinks"
+      [routerLink]="link.path"
+      routerLinkActive="text-blue-400 font-bold"
+      [routerLinkActiveOptions]="{ exact: link.exact ?? false }"
+      class="hover:text-gray-400 cursor-pointer"
+    >
+      {{ link.label }}
+    </a>
+  </div>
+</nav>

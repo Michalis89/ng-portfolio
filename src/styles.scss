@@ -6,3 +6,23 @@
 body {
   background-color: #111827; /* Ίδιο με bg-gray-900 */
 }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Πλάτος της scrollbar */
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e2e; /* Χρώμα background */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6; /* Μπλε απόχρωση */
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb; /* Πιο σκούρο μπλε στο hover */
+}

@@ -16,36 +16,48 @@ export class ProjectsComponent implements OnInit {
   readonly Github = Github;
   readonly Globe = Globe;
 
-  categories = ['All', 'Web', 'Mobile', 'Open Source', 'Games'];
+  categories = ['All', 'JavaScript', 'Angular', 'React', 'Next'];
   selectedCategory = 'All';
 
   projects = [
     {
       title: 'Mythic Codex',
-      description: 'A D&D Character Builder with advanced features.',
-      image: 'assets/projects/mythic-codex.jpg',
-      stack: ['Angular', 'Tailwind', 'Supabase'],
+      description:
+        'Mythic Codex is a D&D character builder and campaign management tool designed for players and Dungeon Masters. It provides a digital character sheet, party and quest tracking, and tools for managing combat encounters.',
+      image: './projects/mythic-codex.png',
+      stack: ['Next.js', 'Tailwind', 'Supabase'],
       live: 'https://mythic-codex.vercel.app',
-      code: 'https://github.com/your-username/mythic-codex',
-      category: 'Web',
+      code: 'https://github.com/Michalis89/Mythic-Codex',
+      category: 'Next',
     },
     {
       title: 'Platinum Hunters GR',
-      description: 'A hunting game guide website for Greek players.',
-      image: 'assets/projects/platinum-hunters.jpg',
-      stack: ['Next.js', 'Tailwind', 'Firebase'],
+      description:
+        'Platinum Hunters GR – A Greek gaming community platform with trophy guides, gaming review, and user-driven content.',
+      image: './projects/platinum-hunters.png',
+      stack: ['Next.js', 'Tailwind', 'Supabase'],
       live: 'https://platinum-hunters-gr.vercel.app',
-      code: 'https://github.com/your-username/platinum-hunters',
-      category: 'Games',
+      code: 'https://github.com/Michalis89/Platinum-Hunters-GR',
+      category: 'Next',
     },
     {
       title: 'Portfolio',
       description: 'My personal portfolio built with Angular & GSAP.',
-      image: 'assets/projects/portfolio.jpg',
+      image: './projects/my-portfolio.png',
       stack: ['Angular', 'GSAP', 'Tailwind'],
       live: 'https://yourportfolio.com',
       code: 'https://github.com/your-username/portfolio',
-      category: 'Web',
+      category: 'Angular',
+    },
+    {
+      title: 'Covid 19 Tracker',
+      description:
+        'This is a Reactjs app for tracking the Covid 19 cases recoveries and deaths worldwide and per country.',
+      image: './projects/covid19-tracker.png',
+      stack: ['React', 'CSS'],
+      live: 'https://covid-19-tracker-591a6.web.app/',
+      code: 'https://github.com/Michalis89/covid-19-tracker',
+      category: 'React',
     },
   ];
 

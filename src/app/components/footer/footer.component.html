@@ -1,1 +1,32 @@
-<p>footer works!</p>
+<footer class="bg-gray-900 text-white py-8 px-6 w-full">
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center"
+  >
+    <div class="flex justify-center md:justify-start gap-6">
+      <a
+        *ngFor="let social of socialLinks"
+        [href]="social.url"
+        target="_blank"
+        class="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition"
+      >
+        <lucide-icon [img]="social.icon" class="w-6 h-6"></lucide-icon>
+        <span class="hidden md:inline text-sm">{{ social.name }}</span>
+      </a>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <h3 class="text-xl font-semibold">Michail Mouzakitis</h3>
+      <p class="text-gray-400 text-sm">© 2024 All rights reserved.</p>
+    </div>
+
+    <div class="flex justify-center md:justify-end gap-6">
+      <a
+        *ngFor="let link of quickLinks"
+        [routerLink]="link.path"
+        class="text-gray-400 hover:text-blue-400 transition py-1 text-sm"
+      >
+        {{ link.name }}
+      </a>
+    </div>
+  </div>
+</footer>

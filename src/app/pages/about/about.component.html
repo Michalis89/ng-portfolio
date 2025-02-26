@@ -1,6 +1,5 @@
 <section #aboutSection class="bg-gray-900 text-white py-12 px-6">
   <div class="max-w-5xl mx-auto">
-    <!-- Title -->
     <h2 class="text-4xl font-bold text-center">About Me</h2>
     <p class="mt-4 text-center text-gray-300 max-w-3xl mx-auto">
       I'm Michail Mouzakitis, a passionate Front End Engineer with expertise in
@@ -8,48 +7,50 @@
       leveraging my diverse skill set to turn ideas into impactful solutions.
     </p>
 
-    <!-- Personal Info & Tech Stack -->
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <!-- Personal Info -->
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col w-full">
         <h3 class="text-xl font-semibold mb-4 flex items-center gap-3">
           <lucide-icon [img]="User" class="w-6 h-6 text-blue-400"></lucide-icon>
           Personal Info
         </h3>
 
         <ul class="mt-2 space-y-3 text-gray-300">
-          <li *ngFor="let info of personalInfo" class="flex items-center gap-3">
+          <li
+            *ngFor="let info of personalInfo"
+            class="flex items-center gap-3 flex-wrap"
+          >
             <lucide-icon
               [img]="info.icon"
               class="w-5 h-5 text-blue-400"
             ></lucide-icon>
-            <span class="font-semibold">{{ info.label }}:</span>
-            {{ info.value }}
+            <span class="font-semibold whitespace-nowrap"
+              >{{ info.label }}:</span
+            >
+            <span class="break-words truncate">{{ info.value }}</span>
           </li>
         </ul>
 
-        <div class="mt-12 grid grid-cols-2 md:grid-cols-2 gap-8">
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
           <a
             *ngFor="let social of socialLinks"
             [href]="social.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center gap-2 px-3 py-2 bg-gray-700 text-white rounded-lg hover:bg-blue-500 transition"
+            class="flex items-center gap-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-blue-500 transition"
           >
-            <lucide-icon [img]="social.icon" class="w-6 h-6"></lucide-icon>
-            {{ social.name }}
+            <lucide-icon [img]="social.icon" class="w-5 h-5"></lucide-icon>
+            <span class="text-sm">{{ social.name }}</span>
           </a>
         </div>
       </div>
 
-      <!-- Tech Stack -->
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col w-full">
         <h3 class="text-xl font-semibold mb-4 flex items-center gap-3">
           <lucide-icon [img]="Cpu" class="w-6 h-6 text-blue-400"></lucide-icon>
           Tech Stack
         </h3>
 
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div *ngFor="let item of techStack" class="flex flex-col gap-1">
             <div class="flex items-center gap-3">
               <lucide-icon
@@ -60,13 +61,14 @@
                 {{ item.category }}
               </h4>
             </div>
-            <p class="text-gray-300 leading-tight">{{ item.skills }}</p>
+            <p class="text-gray-300 leading-tight text-sm">
+              {{ item.skills }}
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Download CV Button -->
     <div class="flex justify-center mt-6">
       <a
         href="cv/cv-michail-mouzakitis.pdf"
@@ -77,7 +79,6 @@
       </a>
     </div>
 
-    <!-- Sections -->
     <div class="mt-10 grid md:grid-cols-2 gap-10">
       <div class="flex flex-col gap-10">
         <ng-container *ngFor="let section of sectionsLeft">

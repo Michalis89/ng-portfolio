@@ -1,15 +1,15 @@
 import { NgFor, NgIf } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Input } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+} from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  LucideAngularModule,
-  Calendar,
-  Award,
-  GraduationCap,
-  Briefcase,
-  Gamepad2,
-} from 'lucide-angular';
+import { LucideAngularModule, Briefcase } from 'lucide-angular';
+import { IconService } from '../../services/icon.service';
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
@@ -19,18 +19,27 @@ gsap.registerPlugin(ScrollTrigger);
   templateUrl: './about-section.component.html',
   styleUrl: './about-section.component.scss',
 })
-export class AboutSectionComponent implements AfterViewInit {
-  readonly Calendar = Calendar;
-  readonly icons = {
-    education: GraduationCap,
-    certificates: Award,
-    experience: Briefcase,
-    interests: Gamepad2,
-  };
+export class AboutSectionComponent implements OnInit, AfterViewInit {
   @Input() title!: string;
   @Input() icon!: string;
   @Input() data!: any[];
   @Input() isList!: boolean;
+
+  readonly icons: Record<string, any> = {};
+  Calendar: any;
+
+  constructor(
+    private readonly el: ElementRef,
+    private readonly iconService: IconService
+  ) {}
+
+  ngOnInit() {
+    this.Calendar = this.iconService.getIcon('calendar');
+    this.icons['education'] = this.iconService.getIcon('education');
+    this.icons['certificates'] = this.iconService.getIcon('certificates');
+    this.icons['experience'] = this.iconService.getIcon('experience');
+    this.icons['interests'] = this.iconService.getIcon('interests');
+  }
 
   isInterests(): boolean {
     return (
@@ -41,8 +50,6 @@ export class AboutSectionComponent implements AfterViewInit {
       this.data[0]?.interestsList
     );
   }
-
-  constructor(private readonly el: ElementRef) {}
 
   ngAfterViewInit() {
     gsap.fromTo(
@@ -64,9 +71,6 @@ export class AboutSectionComponent implements AfterViewInit {
   }
 
   getIconForSection(): any {
-    return (
-      this.icons[this.title.toLowerCase() as keyof typeof this.icons] ||
-      Briefcase
-    );
+    return this.icons[this.title.toLowerCase()] || Briefcase;
   }
 }

@@ -1,5 +1,11 @@
 import { NgFor } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, viewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  viewChild,
+} from '@angular/core';
 import { AboutSectionComponent } from '../../components/about-section/about-section.component';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -18,9 +24,9 @@ import {
   Cpu,
   Linkedin,
   Github,
-  Twitter,
   Globe,
 } from 'lucide-angular';
+import { IconService } from '../../services/icon.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,80 +37,17 @@ gsap.registerPlugin(ScrollTrigger);
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
-export class AboutComponent implements AfterViewInit {
+export class AboutComponent implements OnInit, AfterViewInit {
+  User: any;
+  Cpu: any;
+  personalInfo: { label: string; value: string; icon: any }[] = [];
+  socialLinks: { name: string; url: string; icon: any }[] = [];
+  techStack: { category: string; skills: string; icon: any }[] = [];
+  readonly icons: Record<string, any> = {};
+
+  constructor(private readonly iconService: IconService) {}
+
   readonly aboutSection = viewChild.required<ElementRef>('aboutSection');
-
-  readonly User = User;
-  readonly Cpu = Cpu;
-
-  readonly personalInfo = [
-    { label: 'Email', value: 'mouzakitis.m89@gmail.com', icon: Mail },
-    { label: 'Phone', value: '+30 6982961433', icon: Phone },
-    { label: 'City', value: 'Evia', icon: MapPin },
-    { label: 'Address', value: 'Gavalas, Aliveri', icon: MapPin },
-    { label: 'Date of Birth', value: '18/08/1989', icon: Calendar },
-  ];
-  readonly techStack = [
-    {
-      category: 'Frontend Development',
-      skills: 'HTML5, CSS3, JavaScript, TypeScript, Angular, React.js, Next.js',
-      icon: Code,
-    },
-    {
-      category: 'Styling & UI Libraries',
-      skills: 'Tailwind CSS, Bootstrap, Angular Material',
-      icon: Layers,
-    },
-    {
-      category: 'CMS & Backend Technologies',
-      skills: 'Magnolia CMS, Firebase, Node.js',
-      icon: Server,
-    },
-    {
-      category: 'State Management & Data Fetching',
-      skills: 'Redux, Redux Toolkit, RTK Query, NgRx, RxJS',
-      icon: GitBranch,
-    },
-    {
-      category: 'Testing & Quality Assurance',
-      skills:
-        'Jest (Unit Testing), Cypress (E2E Testing), Stryker (Mutation Testing)',
-      icon: ShieldCheck,
-    },
-    {
-      category: 'Version Control & DevOps',
-      skills: 'Git, GitHub, GitLab',
-      icon: GitBranch,
-    },
-  ];
-  readonly icons = {
-    Linkedin: Linkedin,
-    Github: Github,
-    Twitter: Twitter,
-    Globe: Globe,
-  };
-  readonly socialLinks = [
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/your-profile',
-      icon: this.icons.Linkedin,
-    },
-    {
-      name: 'GitHub',
-      url: 'https://github.com/your-username',
-      icon: this.icons.Github,
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/your-handle',
-      icon: this.icons.Twitter,
-    },
-    {
-      name: 'Medium',
-      url: 'https://medium.com/@yourusername',
-      icon: this.icons.Globe,
-    },
-  ];
 
   sectionsLeft = [
     {
@@ -145,13 +88,15 @@ export class AboutComponent implements AfterViewInit {
           provider: 'Magnolia',
           description:
             'Certified Associate Developer in Magnolia CMS, proficient in leveraging its modular architecture for efficient website development. Skilled in content management and workflow optimization, I bring expertise in delivering tailored digital experiences to drive business success.',
+          image: './certifications/magnolia.png',
         },
         {
           year: '2019',
           title: 'Angular - The Complete Guide',
           provider: 'Udemy',
           description:
-            'Unlock the full potential of Angular with "Angular - The Complete Guide" on Udemy. Led by expert instructor Maximilian Schwarzmüller, thmis course provides a coprehensive journey from basics to advanced concepts, equipping you to build robust web applications with confidence.',
+            'Unlock the full potential of Angular with "Angular - The Complete Guide" on Udemy. Led by expert instructor Maximilian Schwarzmüller, this course provides a coprehensive journey from basics to advanced concepts, equipping you to build robust web applications with confidence.',
+          image: './certifications/angular-udemy.png',
         },
         {
           year: '2018',
@@ -251,6 +196,100 @@ export class AboutComponent implements AfterViewInit {
       ],
     },
   ];
+
+  ngOnInit(): void {
+    this.User = this.iconService.getIcon('user');
+    this.Cpu = this.iconService.getIcon('cpu');
+    this.icons['linkedin'] = this.iconService.getIcon('linkedin');
+    this.icons['github'] = this.iconService.getIcon('github');
+    this.icons['globe'] = this.iconService.getIcon('globe');
+    this.icons['frontEnd'] = this.iconService.getIcon('code');
+    this.icons['styling'] = this.iconService.getIcon('layers');
+    this.icons['backEnd'] = this.iconService.getIcon('server');
+    this.icons['stateManagement'] = this.iconService.getIcon('shuffle');
+    this.icons['versionControl'] = this.iconService.getIcon('gitCommit');
+    this.icons['testing'] = this.iconService.getIcon('shieldCheck');
+    this.personalInfo = [
+      {
+        label: 'Email',
+        value: 'mouzakitis.m89@gmail.com',
+        icon: this.iconService.getIcon('mail'),
+      },
+      {
+        label: 'Phone',
+        value: '+30 6982961433',
+        icon: this.iconService.getIcon('phone'),
+      },
+      {
+        label: 'City',
+        value: 'Evia',
+        icon: this.iconService.getIcon('map'),
+      },
+      {
+        label: 'Address',
+        value: 'Gavalas, Aliveri',
+        icon: this.iconService.getIcon('map'),
+      },
+      {
+        label: 'Date of Birth',
+        value: '18/08/1989',
+        icon: this.iconService.getIcon('calendar'),
+      },
+    ];
+    this.socialLinks = [
+      {
+        name: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/michalis-mouzakitis/',
+        icon: this.icons['linkedin'],
+      },
+      {
+        name: 'GitHub',
+        url: 'https://github.com/Michalis89',
+        icon: this.icons['github'],
+      },
+      {
+        name: 'Medium',
+        url: 'https://medium.com/@mouzakitis.m89',
+        icon: this.icons['globe'],
+      },
+    ];
+
+    this.techStack = [
+      {
+        category: 'Frontend Development',
+        skills:
+          'HTML5, CSS3, JavaScript, TypeScript, Angular, React.js, Next.js',
+        icon: this.icons['frontEnd'],
+      },
+      {
+        category: 'Testing & QA',
+        skills:
+          'Jest (Unit Testing), Cypress (E2E Testing), Stryker (Mutation Testing)',
+        icon: this.icons['testing'],
+      },
+      {
+        category: 'Styling & UI Libraries',
+        skills: 'Tailwind CSS, Bootstrap, Angular Material',
+        icon: this.icons['styling'],
+      },
+      {
+        category: 'Backend & CMS',
+        skills: ' Node.js, Firebase, Magnolia CMS',
+        icon: this.icons['backEnd'],
+      },
+      {
+        category: 'State Management',
+        skills: 'Redux, NgRx, RxJS',
+        icon: this.icons['stateManagement'],
+      },
+
+      {
+        category: 'Version Control',
+        skills: 'Git, GitHub, GitLab',
+        icon: this.icons['versionControl'],
+      },
+    ];
+  }
 
   ngAfterViewInit() {
     const aboutSection = this.aboutSection();

@@ -2,7 +2,14 @@
   class="h-screen flex flex-col justify-center items-center text-center bg-gray-900 text-white"
 >
   <h1 class="text-5xl font-bold opacity-0" id="hero-title">
-    Welcome to My Portfolio
+    Welcome to
+    <span id="portfolio-text">
+      <span
+        *ngFor="let char of 'My Portfolio'.split(''); let i = index"
+        class="portfolio-letter inline-block"
+        >{{ char }}</span
+      >
+    </span>
   </h1>
   <p class="text-lg mt-4 opacity-0" id="hero-subtitle">
     I build high-quality web applications using Angular & modern web

@@ -45,7 +45,7 @@ export class ProjectsComponent implements OnInit {
       description: 'My personal portfolio built with Angular & GSAP.',
       image: './projects/my-portfolio.png',
       stack: ['Angular', 'GSAP', 'Tailwind'],
-      live: 'https://ng-portfolio-seven.vercel.app/',
+      live: 'https://michail-mouzakitis-portfolio.vercel.app/',
       code: 'https://github.com/Michalis89/ng-portfolio',
       category: 'Angular',
     },

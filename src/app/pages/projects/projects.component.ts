@@ -59,6 +59,16 @@ export class ProjectsComponent implements OnInit {
       code: 'https://github.com/Michalis89/covid-19-tracker',
       category: 'React',
     },
+    {
+      title: 'Interactive Quiz App',
+      description:
+        'This is a Neon-Themed Interactive Gaming Quiz App built using HTML, CSS, and JavaScript. The quiz dynamically fetches gaming-related questions from an API and features real-time score tracking, sound effects, and animations.',
+      image: './projects/interactive-quiz.png',
+      stack: ['HTML', 'CSS', 'JavaScript', 'GSAP'],
+      live: 'https://portfolio-interactive-quiz-app.vercel.app/',
+      code: 'https://github.com/Michalis89/Interactive-Quiz-App',
+      category: 'React',
+    },
   ];
 
   filteredProjects = [...this.projects];

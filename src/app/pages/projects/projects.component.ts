@@ -67,7 +67,17 @@ export class ProjectsComponent implements OnInit {
       stack: ['HTML', 'CSS', 'JavaScript', 'GSAP'],
       live: 'https://portfolio-interactive-quiz-app.vercel.app/',
       code: 'https://github.com/Michalis89/Interactive-Quiz-App',
-      category: 'React',
+      category: 'JavaScript',
+    },
+    {
+      title: 'Weather App',
+      description:
+        'Weatherio is a weather web application that provides users with current weather conditions, a 5-day forecast, and additional weather-related information for a selected location. It utilizes HTML, CSS, and JavaScript to create an interactive and visually appealing user interface.',
+      image: './projects/weather-app.png',
+      stack: ['HTML', 'CSS', 'JavaScript', 'Vite'],
+      live: 'https://weather-app-js-sand.vercel.app/',
+      code: 'https://github.com/Michalis89/weather-app-js',
+      category: 'JavaScript',
     },
   ];
 

@@ -25,7 +25,7 @@ export class HeroComponent implements AfterViewInit {
         { opacity: 1, y: 0, duration: 1 }
       )
       .fromTo(
-        '#hero-button',
+        '#hero-buttons',
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 1 }
       )

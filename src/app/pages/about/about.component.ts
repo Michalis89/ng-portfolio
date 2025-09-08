@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -9,23 +9,7 @@ import {
 import { AboutSectionComponent } from '../../components/about-section/about-section.component';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  LucideAngularModule,
-  User,
-  Mail,
-  Phone,
-  MapPin,
-  Calendar,
-  Code,
-  Layers,
-  Server,
-  GitBranch,
-  ShieldCheck,
-  Cpu,
-  Linkedin,
-  Github,
-  Globe,
-} from 'lucide-angular';
+import { LucideAngularModule } from 'lucide-angular';
 import { IconService } from '../../services/icon.service';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [NgFor, AboutSectionComponent, LucideAngularModule],
+  imports: [NgFor, AboutSectionComponent, LucideAngularModule, NgIf],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
@@ -68,6 +52,19 @@ export class AboutComponent implements OnInit, AfterViewInit {
       title: 'Certificates',
       icon: 'certificate',
       data: [
+        {
+          year: '2026 - TBD',
+          title: 'Vue - The Complete Guide (incl. Router & Composition API)',
+          provider: 'Udemy',
+          description:
+            'Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!',
+        },
+        {
+          year: '2026 - TBD',
+          title: 'JavaScript Algorithms and Data Structures Masterclass',
+          provider: 'Udemy',
+          description: '',
+        },
         {
           year: '2025 - TBD',
           title: 'Next.js 15 & React - The Complete Guide',
@@ -128,10 +125,10 @@ export class AboutComponent implements OnInit, AfterViewInit {
           description:
             'Develop and maintain web applications for EPO (European Patent Office).',
           responsibilities: [
-            'Develop new features using ReactJS and NextJS.',
-            'Using Redux Toolkit Query (`fetchBaseQuery`) for efficient data fetching and caching.',
-            'Managing global application state with Redux.',
-            'Ensuring application stability and robustness by writing unit tests with Jest and conducting end-to-end tests with Cypress.',
+            'Modernizing enterprise web apps with ReactJS & Next.js',
+            'Introduced Redux Toolkit Query for consistent state/data management.',
+            'Proposed Agile ceremonies (planning, retrospectives, stand-ups) to improve collaboration.',
+            'Volunteered for a Scrum Master–like role, facilitating smoother workflows.',
           ],
         },
         {
@@ -141,11 +138,13 @@ export class AboutComponent implements OnInit, AfterViewInit {
           description:
             'Develop and maintain web applications for Proximus (client of Arhs) a huge telecommunications organization.',
           responsibilities: [
-            'Develop new features using Angular and Magnolia CMS.',
-            'Using RxJS for handling asynchronous operations and data streams in our web applications.',
-            'Using NGXS for managing application state.',
-            'Using Jest for Unit Testing, Stryker for Mutation Testing, and Cypress for End-to-End Testing.',
-            'Provide support and guidance to other team members for Magnolia CMS.',
+            'Built enterprise-scale apps with Angular & Magnolia CMS.',
+            'Leveraged RxJS/NGXS for async data & state management.',
+            'Reduced UI bugs by ~30% via Cypress regression suite & expanded unit/mutation coverage.',
+            'Introduced Stryker mutation testing → more bulletproof unit tests, higher release confidence.',
+            'Improved code quality by 25% (SonarQube: fewer code smells, reduced complexity).',
+            'Improved code quality by 25% (SonarQube: fewer code smells, reduced complexity).',
+            'Mentored juniors, code reviews, Agile collaboration.',
           ],
         },
         {
@@ -155,11 +154,9 @@ export class AboutComponent implements OnInit, AfterViewInit {
           description:
             'Forecast trends in food safety incidents. Developed risk prevention systems.',
           responsibilities: [
-            'Develop new tools for researchers with HTML/CSS/JavaScript.',
-            "We are using Drupal CMS for researchers' websites.",
-            'We are using ReactJS to develop applications for researchers.',
-            'I helped with a rewrite of the main product FOODAKAI with ReactJs.',
-            'Close communication with the back-end team.',
+            'Contributed to FOODAKAI rewrite with ReactJS, improving maintainability.',
+            'Built research tools with React & Drupal CMS.',
+            'Collaborated closely with backend on APIs/data flows.',
           ],
         },
         {
@@ -169,9 +166,8 @@ export class AboutComponent implements OnInit, AfterViewInit {
           description:
             'Contadd is an innovative digital platform that brings advertisers, publishers and audiences together.',
           responsibilities: [
-            'Using jQuery and CSS on a prototype to handle smooth and responsive animations.',
-            'Rewrite the prototype using the G-SAP animation library.',
-            'Use of Cloudflare and DoubleClick platforms for the analytics.',
+            'Prototyped & improved UI animations with jQuery → GSAP.',
+            'Enhanced analytics setup with Cloudflare & DoubleClick.',
           ],
         },
       ],
@@ -186,11 +182,26 @@ export class AboutComponent implements OnInit, AfterViewInit {
           description:
             'In my free time, I enjoy a variety of activities that help me relax and unwind. Here are some of my interests:',
           interestsList: [
-            'Video Games',
-            'D&D',
-            'Movies',
-            'TV series',
-            'Outdoor Activities with my Dog',
+            {
+              text: 'Competitive Strategy Games (One Piece TCG, Magic: The Gathering) → ',
+              bold: 'strategic planning, adaptability',
+            },
+            {
+              text: 'Gaming Communities (Soulsborne, Baldur’s Gate 3) → ',
+              bold: 'problem-solving, persistence',
+            },
+            {
+              text: 'Dungeons & Dragons →',
+              bold: ' teamwork, creativity, communication',
+            },
+            {
+              text: 'Outdoor Activities with my Dog → ',
+              bold: ' balance, responsibility, stress relief',
+            },
+            {
+              text: 'Anime & Manga Enthusiast → ',
+              bold: ' cultural appreciation, storytelling',
+            },
           ],
         },
       ],
@@ -207,8 +218,10 @@ export class AboutComponent implements OnInit, AfterViewInit {
     this.icons['styling'] = this.iconService.getIcon('layers');
     this.icons['backEnd'] = this.iconService.getIcon('server');
     this.icons['stateManagement'] = this.iconService.getIcon('shuffle');
+    this.icons['wrench'] = this.iconService.getIcon('wrench');
     this.icons['versionControl'] = this.iconService.getIcon('gitCommit');
     this.icons['testing'] = this.iconService.getIcon('shieldCheck');
+    this.icons['refreshCw'] = this.iconService.getIcon('refreshCw');
     this.personalInfo = [
       {
         label: 'Email',
@@ -264,7 +277,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
       {
         category: 'Testing & QA',
         skills:
-          'Jest (Unit Testing), Cypress (E2E Testing), Stryker (Mutation Testing)',
+          'Jest (Unit Testing), Cypress (E2E Testing), Stryker (Mutation Testing), SonarQube',
         icon: this.icons['testing'],
       },
       {
@@ -274,7 +287,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
       },
       {
         category: 'Backend & CMS',
-        skills: ' Node.js, Firebase, Magnolia CMS',
+        skills: ' Node.js, Firebase, Magnolia CMS, Drupal',
         icon: this.icons['backEnd'],
       },
       {
@@ -282,11 +295,20 @@ export class AboutComponent implements OnInit, AfterViewInit {
         skills: 'Redux, NgRx, RxJS',
         icon: this.icons['stateManagement'],
       },
-
+      {
+        category: 'DevOps & Tools',
+        skills: 'CI/CD, GitHub Actions, Docker (basic)',
+        icon: this.icons['wrench'],
+      },
       {
         category: 'Version Control',
         skills: 'Git, GitHub, GitLab',
         icon: this.icons['versionControl'],
+      },
+      {
+        category: 'Methodologies',
+        skills: 'Agile/Scrum',
+        icon: this.icons['refreshCw'],
       },
     ];
   }
@@ -311,5 +333,19 @@ export class AboutComponent implements OnInit, AfterViewInit {
         }
       );
     }
+  }
+
+  getAge(dateString: string): number {
+    const today = new Date();
+    const [day, month, year] = dateString.split('/').map(Number);
+    const birthDate = new Date(year, month - 1, day);
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
   }
 }

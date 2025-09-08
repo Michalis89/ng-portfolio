@@ -57,7 +57,8 @@
 
         <ul class="mt-2 text-gray-300 list-disc list-inside">
           <li *ngFor="let interest of data[0]?.interestsList">
-            {{ interest }}
+            {{ interest.text }}
+            <strong *ngIf="interest.bold">{{ interest.bold }}</strong>
           </li>
         </ul>
       </div>

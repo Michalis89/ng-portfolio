@@ -21,6 +21,8 @@ import {
   ShieldCheck,
   Shuffle,
   GitCommit,
+  Wrench,
+  RefreshCw,
 } from 'lucide-angular';
 
 @Injectable({
@@ -49,6 +51,8 @@ export class IconService {
     shieldCheck: ShieldCheck,
     shuffle: Shuffle,
     gitCommit: GitCommit,
+    wrench: Wrench,
+    refreshCw: RefreshCw,
   };
 
   getIcon(name: keyof typeof this.icons) {

@@ -26,7 +26,12 @@
             <span class="font-semibold whitespace-nowrap"
               >{{ info.label }}:</span
             >
-            <span class="break-words truncate">{{ info.value }}</span>
+            <span class="break-words truncate"
+              >{{ info.value }}
+              <ng-container *ngIf="info.label === 'Date of Birth'">
+                ({{ getAge(info.value) }} years old)
+              </ng-container></span
+            >
           </li>
         </ul>
 

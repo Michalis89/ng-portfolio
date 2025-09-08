@@ -266,7 +266,6 @@ export class AboutComponent implements OnInit, AfterViewInit {
         icon: this.icons['globe'],
       },
     ];
-
     this.techStack = [
       {
         category: 'Frontend Development',
@@ -287,7 +286,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
       },
       {
         category: 'Backend & CMS',
-        skills: ' Node.js, Firebase, Magnolia CMS, Drupal',
+        skills: ' Node.js, NestJs, Firebase, Magnolia CMS, Drupal',
         icon: this.icons['backEnd'],
       },
       {

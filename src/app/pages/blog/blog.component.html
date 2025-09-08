@@ -1,0 +1,149 @@
+<section class="bg-gray-900 text-white py-12 px-6">
+  <div class="max-w-6xl mx-auto mb-8">
+    <div class="text-center">
+      <h2
+        class="text-4xl font-bold text-center flex items-center justify-center gap-3"
+      >
+        <lucide-icon
+          [img]="PenSquare"
+          class="w-8 h-8 text-blue-400"
+        ></lucide-icon>
+        Blog
+      </h2>
+      <p class="mt-3 text-gray-300 max-w-3xl mx-auto">
+        Articles, notes & ideas. Pulled live from my Medium feed.
+      </p>
+    </div>
+
+    <div
+      class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-8"
+    >
+      <div class="relative w-full md:w-80">
+        <lucide-icon
+          [img]="Search"
+          class="w-5 h-5 text-gray-400 absolute left-1 top-1/2 -translate-y-1/2"
+        ></lucide-icon>
+        <input
+          [(ngModel)]="query"
+          (ngModelChange)="applyFilters()"
+          type="text"
+          placeholder="Search posts…"
+          class="w-full bg-gray-800 text-white rounded-lg pl-10 pr-4 py-2 outline-none ring-1 ring-gray-700 focus:ring-blue-500 transition"
+        />
+      </div>
+
+      <div class="flex items-center gap-2 overflow-x-auto pb-1">
+        <button
+          *ngFor="let c of categories"
+          (click)="selectedCategory = c; applyFilters()"
+          class="px-3 py-1.5 rounded-full text-sm font-medium transition whitespace-nowrap"
+          [ngClass]="
+            selectedCategory === c
+              ? 'bg-blue-500 text-white shadow'
+              : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+          "
+        >
+          <span class="inline-flex items-center gap-1">
+            <lucide-icon [img]="TagIcon" class="w-4 h-4"></lucide-icon>{{ c }}
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div
+      *ngIf="loading"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+    >
+      <div
+        *ngFor="let s of [0, 1, 2, 3, 4, 5]"
+        class="bg-gray-800 rounded-lg overflow-hidden animate-pulse"
+      >
+        <div class="h-40 bg-gray-700"></div>
+        <div class="p-4">
+          <div class="h-6 bg-gray-700 w-3/4 mb-2 rounded"></div>
+          <div class="h-4 bg-gray-700 w-1/2 rounded"></div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading" class="mt-8">
+      <ng-container *ngIf="posts.length; else emptyState">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article
+            *ngFor="let p of posts"
+            class="bg-gray-800 rounded-lg overflow-hidden group transition hover:shadow-xl"
+          >
+            <a
+              [href]="p.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block"
+            >
+              <ng-container *ngIf="p.thumbnail; else thumbFallback">
+                <img
+                  [src]="p.thumbnail"
+                  alt=""
+                  class="w-full h-40 object-cover transition group-hover:scale-105"
+                />
+              </ng-container>
+              <ng-template #thumbFallback>
+                <div
+                  class="w-full h-40 bg-gradient-to-br from-gray-700 to-gray-600"
+                ></div>
+              </ng-template>
+
+              <div class="p-4">
+                <h3
+                  class="font-semibold text-lg line-clamp-2 group-hover:text-blue-300 transition"
+                >
+                  {{ p.title }}
+                </h3>
+
+                <div class="mt-2 flex items-center gap-4 text-gray-400 text-sm">
+                  <span class="inline-flex items-center gap-1">
+                    <lucide-icon [img]="Calendar" class="w-4 h-4"></lucide-icon>
+                    {{ p.pubDate | date : "mediumDate" }}
+                  </span>
+                  <span class="inline-flex items-center gap-1">
+                    <lucide-icon [img]="Clock" class="w-4 h-4"></lucide-icon>
+                    {{ p.readingTime }} min read
+                  </span>
+                </div>
+
+                <p class="mt-3 text-gray-300 text-sm line-clamp-3">
+                  {{ p.excerpt }}
+                </p>
+
+                <div
+                  class="mt-4 inline-flex items-center gap-1 text-blue-400 group-hover:text-blue-300"
+                >
+                  Read on Medium
+                  <lucide-icon
+                    [img]="ExternalLink"
+                    class="w-4 h-4"
+                  ></lucide-icon>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <div
+          class="flex justify-center mt-8"
+          *ngIf="filteredAll().length > posts.length"
+        >
+          <button
+            (click)="loadMore()"
+            class="px-5 py-2 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition"
+          >
+            Load more
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-template #emptyState>
+        <div class="mt-12 text-center text-gray-400">No posts found.</div>
+      </ng-template>
+    </div>
+  </div>
+</section>

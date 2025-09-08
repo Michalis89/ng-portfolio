@@ -9,8 +9,8 @@ import {
 import { AboutSectionComponent } from '../../components/about-section/about-section.component';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { LucideAngularModule } from 'lucide-angular';
-import { IconService } from '../../services/icon.service';
+import { LucideAngularModule, UserCircle } from 'lucide-angular';
+import { IconService } from '../../services/icon/icon.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +24,8 @@ gsap.registerPlugin(ScrollTrigger);
 export class AboutComponent implements OnInit, AfterViewInit {
   User: any;
   Cpu: any;
+  UserCircle = UserCircle;
+
   personalInfo: { label: string; value: string; icon: any }[] = [];
   socialLinks: { name: string; url: string; icon: any }[] = [];
   techStack: { category: string; skills: string; icon: any }[] = [];

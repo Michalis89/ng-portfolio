@@ -1,13 +1,21 @@
 <section #aboutSection class="bg-gray-900 text-white py-12 px-6">
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-4xl font-bold text-center">About Me</h2>
+    <h2
+      class="text-4xl font-bold text-center flex items-center justify-center gap-3"
+    >
+      <lucide-icon
+        [img]="UserCircle"
+        class="w-8 h-8 text-blue-400"
+      ></lucide-icon>
+      About Me
+    </h2>
     <p class="mt-4 text-center text-gray-300 max-w-3xl mx-auto">
       I'm Michail Mouzakitis, a passionate Front End Engineer with expertise in
       Angular, React, and modern web technologies. I thrive on challenges,
       leveraging my diverse skill set to turn ideas into impactful solutions.
     </p>
 
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
       <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col w-full">
         <h3 class="text-xl font-semibold mb-4 flex items-center gap-3">
           <lucide-icon [img]="User" class="w-6 h-6 text-blue-400"></lucide-icon>

@@ -2,7 +2,7 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Globe, LucideAngularModule } from 'lucide-angular';
+import { Globe, LucideAngularModule, FolderKanban } from 'lucide-angular';
 import { siGithub } from 'simple-icons';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,19 +16,11 @@ gsap.registerPlugin(ScrollTrigger);
 export class ProjectsComponent implements OnInit {
   readonly Github = siGithub;
   readonly Globe = Globe;
-
+  FolderKanban = FolderKanban;
   categories = ['All', 'JavaScript', 'Angular', 'React', 'Next'];
   selectedCategory = 'All';
 
   projects = [
-    // {
-    //   title: 'Mythic Codex',
-    //   description:
-    //     'Mythic Codex is a D&D character builder and campaign management tool designed for players and Dungeon Masters. It provides a digital character sheet, party and quest tracking, and tools for managing combat encounters.',
-    //   image: './projects/mythic-codex.png',
-    //   stack: ['Next.js', 'Tailwind', 'Supabase'],
-    //   category: 'Next',
-    // },
     {
       title: 'Platinum Hunters GR',
       description:

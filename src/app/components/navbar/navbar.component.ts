@@ -18,6 +18,7 @@ export class NavbarComponent {
     { path: '/', label: 'Home', exact: true },
     { path: '/about', label: 'About' },
     { path: '/projects', label: 'Projects' },
+    { path: '/blog', label: 'Blog' },
   ];
 
   toggleMenu() {

@@ -1,9 +1,22 @@
 <section class="py-16 px-6 bg-gray-900 text-white">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center mb-10">Projects</h2>
+    <div class="text-center">
+      <h2
+        class="text-4xl font-bold text-center flex items-center justify-center gap-3"
+      >
+        <lucide-icon
+          [img]="FolderKanban"
+          class="w-8 h-8 text-blue-400"
+        ></lucide-icon>
+        Projects
+      </h2>
+      <p class="mt-3 text-gray-300 max-w-3xl mx-auto">
+        Articles, notes & ideas. Pulled live from my Medium feed.
+      </p>
+    </div>
 
     <div
-      class="flex justify-center gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-blue-500"
+      class="flex justify-center gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-blue-500 mt-8"
     >
       <button
         *ngFor="let category of categories"

@@ -2,7 +2,7 @@ import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
-import { IconService } from '../../services/icon.service';
+import { IconService } from '../../services/icon/icon.service';
 
 @Component({
   selector: 'app-footer',
@@ -13,8 +13,9 @@ import { IconService } from '../../services/icon.service';
 })
 export class FooterComponent implements OnInit {
   readonly quickLinks = [
-    { name: 'Projects', path: '/projects' },
     { name: 'About', path: '/about' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Blog', path: '/blog' },
   ];
 
   socialLinks: { name: string; url: string; icon: any }[] = [];

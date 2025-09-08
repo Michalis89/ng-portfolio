@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "vercel-start": "vercel dev"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +19,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "fast-xml-parser": "^5.2.5",
     "gsap": "^3.12.7",
     "lucide-angular": "^0.476.0",
     "rxjs": "~7.8.0",
@@ -30,6 +32,7 @@
     "@angular/cli": "^18.2.3",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "@vercel/node": "^5.3.21",
     "autoprefixer": "^10.4.20",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",

@@ -9,7 +9,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { LucideAngularModule, Briefcase } from 'lucide-angular';
-import { IconService } from '../../services/icon.service';
+import { IconService } from '../../services/icon/icon.service';
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({

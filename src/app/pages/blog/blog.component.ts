@@ -47,6 +47,10 @@ export class BlogComponent implements OnInit {
   pageSize = 6;
   showCount = this.pageSize;
 
+  get skeletonArray() {
+    return Array(this.pageSize).fill(0);
+  }
+
   ngOnInit() {
     this.medium.getPosts().subscribe((items) => {
       const mapped = items.map((p) => ({

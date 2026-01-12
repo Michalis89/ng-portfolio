@@ -24,16 +24,26 @@ export class ProjectsComponent implements OnInit {
     {
       title: 'Platinum Hunters GR',
       description:
-        'Platinum Hunters GR – A Greek gaming community platform with trophy guides, gaming review, and user-driven content.',
+        'Platinum Hunters GR - A full-stack web platform for tracking and managing gaming progress, built with Next.js, Supabase, and a focus on scalable data models and UI state.',
       image: './projects/platinum-hunters.png',
-      stack: ['Next.js', 'Tailwind', 'Supabase'],
+      stack: ['Next.js', 'TypeScript ', 'Tailwind', 'Supabase'],
       live: 'https://platinum-hunters-gr.vercel.app',
       code: 'https://github.com/Michalis89/Platinum-Hunters-GR',
       category: 'Next',
     },
     {
+      title: 'Bloka Agrotwn',
+      description: `An Angular application for traffic incident monitoring and visualization, featuring standalone component architecture, interactive Leaflet maps, dynamic theming with light/dark mode support, and responsive UI design.`,
+      image: './projects/bloka-agrotwn.png',
+      stack: ['Angular'],
+      live: 'https://bloka-agrotwn.vercel.app/',
+      code: 'https://github.com/Michalis89/bloka-agrotwn',
+      category: 'Angular',
+    },
+    {
       title: 'Portfolio',
-      description: 'My personal portfolio built with Angular & GSAP.',
+      description: `An Angular-based portfolio application showcasing component-driven architecture,
+      animations with GSAP, and responsive UI design.`,
       image: './projects/my-portfolio.png',
       stack: ['Angular', 'GSAP', 'Tailwind'],
       live: 'https://michail-mouzakitis-portfolio.vercel.app/',
@@ -42,8 +52,8 @@ export class ProjectsComponent implements OnInit {
     },
     {
       title: 'Covid 19 Tracker',
-      description:
-        'This is a Reactjs app for tracking the Covid 19 cases recoveries and deaths worldwide and per country.',
+      description: `A React application consuming public APIs to visualize Covid-19 statistics with interactive charts.
+      `,
       image: './projects/covid19-tracker.png',
       stack: ['React', 'CSS'],
       live: 'https://covid-19-tracker-591a6.web.app/',

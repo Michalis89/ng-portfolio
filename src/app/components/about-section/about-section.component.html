@@ -8,60 +8,60 @@
   </h3>
 
   <div class="relative border-l-4 border-blue-500 mt-6">
-    <ng-container *ngIf="isList; else interestsTemplate">
-      <div *ngFor="let item of data" class="ml-6 mb-8">
-        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2.5"></div>
+    @if (isList) { @for (item of data; track item) {
+    <div class="ml-6 mb-8">
+      <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2.5"></div>
 
-        <p class="text-gray-400 text-sm flex items-center gap-1">
-          <lucide-angular
-            [img]="Calendar"
-            name="calendar"
-            class="w-5 h-5 text-gray-400"
-          ></lucide-angular>
+      <p class="text-gray-400 text-sm flex items-center gap-1">
+        <lucide-angular
+          [img]="Calendar"
+          name="calendar"
+          class="w-5 h-5 text-gray-400"
+        ></lucide-angular>
 
-          {{ item.year }}
-        </p>
-        <h4 class="text-xl font-semibold text-white">
-          {{ item.title }}
-          <span
-            *ngIf="item.company || item.subtitle || item.provider"
-            class="text-blue-400"
-          >
-            — {{ item.company || item.subtitle || item.provider }}
-          </span>
-        </h4>
-        <img
-          *ngIf="item.image"
-          [src]="item.image"
-          alt="Certification"
-          class="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
-        />
-        <p class="mt-2 text-gray-300">{{ item.description }}</p>
+        {{ item.year }}
+      </p>
+      <h4 class="text-xl font-semibold text-white">
+        {{ item.title }}
+      </h4>
+      @if(item.company || item.subtitle || item.provider){
+      <h3>
+        Provider:
+        <span class="text-blue-400">
+          {{ item.company || item.subtitle || item.provider }}
+        </span>
+      </h3>
 
-        <ul
-          *ngIf="item.responsibilities?.length > 0"
-          class="mt-2 text-gray-400 text-sm list-disc list-outside pl-6"
-        >
-          <li *ngFor="let task of item.responsibilities">{{ task }}</li>
-        </ul>
-      </div>
-    </ng-container>
+      } @if(item.image){
+      <img
+        [src]="item.image"
+        alt="Certification"
+        class="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
+      />
+      }
 
-    <ng-template #interestsTemplate>
-      <div class="ml-6 mb-8">
-        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2.5"></div>
+      <p class="mt-2 text-gray-300">{{ item.description }}</p>
 
-        <p class="mt-2 text-gray-300">
-          {{ data[0]?.description }}
-        </p>
+      @if (item.responsibilities?.length > 0) {
+      <ul class="mt-2 text-gray-400 text-sm list-disc list-outside pl-6">
+        @for (task of item.responsibilities; track $index) {
+        <li>{{ task }}</li>
+        }
+      </ul>
+      }
+    </div>
+    } } @else {
+    <div class="ml-6 mb-8">
+      <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2.5"></div>
 
-        <ul class="mt-2 text-gray-300 list-disc list-inside">
-          <li *ngFor="let interest of data[0]?.interestsList">
-            {{ interest.text }}
-            <strong *ngIf="interest.bold">{{ interest.bold }}</strong>
-          </li>
-        </ul>
-      </div>
-    </ng-template>
+      <ul class="mt-2 text-gray-300 list-disc list-inside">
+        @for (interest of data[0]?.interestsList; track $index) {
+        <li>
+          {{ interest.text }}
+        </li>
+        }
+      </ul>
+    </div>
+    }
   </div>
 </div>

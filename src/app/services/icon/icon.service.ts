@@ -23,6 +23,7 @@ import {
   GitCommit,
   Wrench,
   RefreshCw,
+  CircleUser,
 } from 'lucide-angular';
 
 @Injectable({
@@ -53,6 +54,7 @@ export class IconService {
     gitCommit: GitCommit,
     wrench: Wrench,
     refreshCw: RefreshCw,
+    circleUser: CircleUser,
   };
 
   getIcon(name: keyof typeof this.icons) {

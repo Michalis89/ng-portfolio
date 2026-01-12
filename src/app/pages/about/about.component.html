@@ -10,9 +10,9 @@
       About Me
     </h2>
     <p class="mt-4 text-center text-gray-300 max-w-3xl mx-auto">
-      I'm Michail Mouzakitis, a passionate Front End Engineer with expertise in
-      Angular, React, and modern web technologies. I thrive on challenges,
-      leveraging my diverse skill set to turn ideas into impactful solutions.
+      I'm Michail Mouzakitis, a Front-End Developer with strong experience in
+      Angular and additional experience in React, working on enterprise-scale
+      web applications.
     </p>
 
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
@@ -23,10 +23,8 @@
         </h3>
 
         <ul class="mt-2 space-y-3 text-gray-300">
-          <li
-            *ngFor="let info of personalInfo"
-            class="flex items-center gap-3 flex-wrap"
-          >
+          @for (info of personalInfo; track info) {
+          <li class="flex items-center gap-3 flex-wrap">
             <lucide-icon
               [img]="info.icon"
               class="w-5 h-5 text-blue-400"
@@ -36,16 +34,16 @@
             >
             <span class="break-words truncate"
               >{{ info.value }}
-              <ng-container *ngIf="info.label === 'Date of Birth'">
-                ({{ getAge(info.value) }} years old)
-              </ng-container></span
+              @if (info.label === 'Date of Birth') { ({{ getAge(info.value) }}
+              years old) }</span
             >
           </li>
+          }
         </ul>
 
         <div class="mt-6 flex flex-wrap justify-center gap-3">
+          @for (social of socialLinks; track social) {
           <a
-            *ngFor="let social of socialLinks"
             [href]="social.url"
             target="_blank"
             rel="noopener noreferrer"
@@ -54,6 +52,7 @@
             <lucide-icon [img]="social.icon" class="w-5 h-5"></lucide-icon>
             <span class="text-sm">{{ social.name }}</span>
           </a>
+          }
         </div>
       </div>
 
@@ -64,7 +63,8 @@
         </h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div *ngFor="let item of techStack" class="flex flex-col gap-1">
+          @for (item of techStack; track item) {
+          <div class="flex flex-col gap-1">
             <div class="flex items-center gap-3">
               <lucide-icon
                 [img]="item.icon"
@@ -78,6 +78,7 @@
               {{ item.skills }}
             </p>
           </div>
+          }
         </div>
       </div>
     </div>
@@ -94,25 +95,25 @@
 
     <div class="mt-10 grid md:grid-cols-2 gap-10">
       <div class="flex flex-col gap-10">
-        <ng-container *ngFor="let section of sectionsLeft">
-          <app-about-section
-            [title]="section.title"
-            [icon]="section.icon"
-            [data]="section.data"
-            [isList]="section.isList"
-          ></app-about-section>
-        </ng-container>
+        @for (section of sectionsLeft; track section) {
+        <app-about-section
+          [title]="section.title"
+          [icon]="section.icon"
+          [data]="section.data"
+          [isList]="section.isList"
+        ></app-about-section>
+        }
       </div>
 
       <div class="flex flex-col gap-10">
-        <ng-container *ngFor="let section of sectionsRight">
-          <app-about-section
-            [title]="section.title"
-            [icon]="section.icon"
-            [data]="section.data"
-            [isList]="section.isList"
-          ></app-about-section>
-        </ng-container>
+        @for (section of sectionsRight; track section) {
+        <app-about-section
+          [title]="section.title"
+          [icon]="section.icon"
+          [data]="section.data"
+          [isList]="section.isList"
+        ></app-about-section>
+        }
       </div>
     </div>
   </div>

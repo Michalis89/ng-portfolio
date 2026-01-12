@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -9,7 +8,7 @@ import {
 import { AboutSectionComponent } from '../../components/about-section/about-section.component';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { LucideAngularModule, UserCircle } from 'lucide-angular';
+import { LucideAngularModule, CircleUser } from 'lucide-angular';
 import { IconService } from '../../services/icon/icon.service';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,14 +16,14 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [NgFor, AboutSectionComponent, LucideAngularModule, NgIf],
+  imports: [AboutSectionComponent, LucideAngularModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
 export class AboutComponent implements OnInit, AfterViewInit {
   User: any;
   Cpu: any;
-  UserCircle = UserCircle;
+  UserCircle = CircleUser;
 
   personalInfo: { label: string; value: string; icon: any }[] = [];
   socialLinks: { name: string; url: string; icon: any }[] = [];
@@ -54,33 +53,33 @@ export class AboutComponent implements OnInit, AfterViewInit {
       title: 'Certificates',
       icon: 'certificate',
       data: [
-        {
-          year: '2026 - TBD',
-          title: 'Vue - The Complete Guide (incl. Router & Composition API)',
-          provider: 'Udemy',
-          description:
-            'Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!',
-        },
-        {
-          year: '2026 - TBD',
-          title: 'JavaScript Algorithms and Data Structures Masterclass',
-          provider: 'Udemy',
-          description: '',
-        },
-        {
-          year: '2025 - TBD',
-          title: 'Next.js 15 & React - The Complete Guide',
-          provider: 'Udemy',
-          description:
-            'Learn NextJS 15 from the ground up and build fullstack ReactJS + NextJS apps with the App Router or Pages Router!',
-        },
-        {
-          year: '2025 - Ongoing',
-          title: 'React - The Complete Guide 2025 (incl. Next.js, Redux)',
-          provider: 'Udemy',
-          description:
-            'Dive in and learn React.js from scratch! Learn React, Hooks, Redux, React Router, Next.js, Best Practices and way more!',
-        },
+        // {
+        //   year: '2026 - TBD',
+        //   title: 'Vue - The Complete Guide (incl. Router & Composition API)',
+        //   provider: 'Udemy',
+        //   description:
+        //     'Vue.js is an awesome JavaScript Framework for building Frontend Applications! VueJS mixes the Best of Angular + React!',
+        // },
+        // {
+        //   year: '2026 - TBD',
+        //   title: 'JavaScript Algorithms and Data Structures Masterclass',
+        //   provider: 'Udemy',
+        //   description: '',
+        // },
+        // {
+        //   year: '2025 - TBD',
+        //   title: 'Next.js 15 & React - The Complete Guide',
+        //   provider: 'Udemy',
+        //   description:
+        //     'Learn NextJS 15 from the ground up and build fullstack ReactJS + NextJS apps with the App Router or Pages Router!',
+        // },
+        // {
+        //   year: '2025 - Ongoing',
+        //   title: 'React - The Complete Guide 2025 (incl. Next.js, Redux)',
+        //   provider: 'Udemy',
+        //   description:
+        //     'Dive in and learn React.js from scratch! Learn React, Hooks, Redux, React Router, Next.js, Best Practices and way more!',
+        // },
         {
           year: '2020',
           title: 'Certified Associate Developer Magnolia CMS',
@@ -93,23 +92,17 @@ export class AboutComponent implements OnInit, AfterViewInit {
           year: '2019',
           title: 'Angular - The Complete Guide',
           provider: 'Udemy',
-          description:
-            'Unlock the full potential of Angular with "Angular - The Complete Guide" on Udemy. Led by expert instructor Maximilian Schwarzmüller, this course provides a coprehensive journey from basics to advanced concepts, equipping you to build robust web applications with confidence.',
           image: './certifications/angular-udemy.png',
         },
         {
           year: '2018',
-          title: 'React',
+          title: 'React Training',
           provider: 'CodeHub',
-          description:
-            'The React Code. Learn program is designed to equip client-side web developers with the knowledge required to effectively adopt and use React. The program covers basic React concepts such as React syntax, and creating components, as well as architectural React concepts and best practices.',
         },
         {
           year: '2016',
           title: 'Certification Of Web Development',
           provider: 'EKPA',
-          description:
-            'The certification aims to provide a comprehensive learning package in web development, covering web design, front-end development, user experience design, and graphic design. The program includes courses such as HTML, JS, CSS, AJAX, Dreamweaver, Bootstrap, Photoshop, InDesign, and Joomla.',
         },
       ],
       isList: true,
@@ -122,15 +115,14 @@ export class AboutComponent implements OnInit, AfterViewInit {
       data: [
         {
           year: '2025 - present',
-          title: 'Front-End Engineer',
+          title: 'Front-End Developer',
           company: 'ARHS Developments',
           description:
             'Develop and maintain web applications for EPO (European Patent Office).',
           responsibilities: [
-            'Modernizing enterprise web apps with ReactJS & Next.js',
-            'Introduced Redux Toolkit Query for consistent state/data management.',
-            'Proposed Agile ceremonies (planning, retrospectives, stand-ups) to improve collaboration.',
-            'Volunteered for a Scrum Master–like role, facilitating smoother workflows.',
+            'Modernizing enterprise web applications using React and Next.js.',
+            'Worked with Redux Toolkit Query for data fetching and state management.',
+            'Took initiative in improving team collaboration by supporting Agile ceremonies (planning, backlog refinement, retrospectives).',
           ],
         },
         {
@@ -138,15 +130,14 @@ export class AboutComponent implements OnInit, AfterViewInit {
           title: 'Front-End Engineer',
           company: 'ARHS Developments',
           description:
-            'Develop and maintain web applications for Proximus (client of Arhs) a huge telecommunications organization.',
+            'Develop and maintain web applications for Proximus (client of Arhs) a telecommunications organization.',
           responsibilities: [
-            'Built enterprise-scale apps with Angular & Magnolia CMS.',
-            'Leveraged RxJS/NGXS for async data & state management.',
-            'Reduced UI bugs by ~30% via Cypress regression suite & expanded unit/mutation coverage.',
-            'Introduced Stryker mutation testing → more bulletproof unit tests, higher release confidence.',
-            'Improved code quality by 25% (SonarQube: fewer code smells, reduced complexity).',
-            'Improved code quality by 25% (SonarQube: fewer code smells, reduced complexity).',
-            'Mentored juniors, code reviews, Agile collaboration.',
+            'Built and maintained enterprise-scale applications using Angular and Magnolia CMS.',
+            'Worked with RxJS and NGXS for asynchronous flows and state management.',
+            'Used Jest for unit testing and Stryker for mutation testing.',
+            'Contributed to UI stability through Cypress regression testing.',
+            'Collaborated with the team to maintain code quality using SonarQube.',
+            'Supported junior developers mainly on Magnolia CMS topics.',
           ],
         },
         {
@@ -156,9 +147,9 @@ export class AboutComponent implements OnInit, AfterViewInit {
           description:
             'Forecast trends in food safety incidents. Developed risk prevention systems.',
           responsibilities: [
-            'Contributed to FOODAKAI rewrite with ReactJS, improving maintainability.',
-            'Built research tools with React & Drupal CMS.',
-            'Collaborated closely with backend on APIs/data flows.',
+            'Contributed to the FOODAKAI rewrite using React.',
+            'Built research tools for external researchers, integrated into Drupal CMS.',
+            'Collaborated with backend developers on API integration and data flows.',
           ],
         },
         {
@@ -166,10 +157,10 @@ export class AboutComponent implements OnInit, AfterViewInit {
           title: 'Junior Front-End Developer',
           company: 'Contadd',
           description:
-            'Contadd is an innovative digital platform that brings advertisers, publishers and audiences together.',
+            'Contadd was an innovative digital platform that brings advertisers, publishers and audiences together.',
           responsibilities: [
-            'Prototyped & improved UI animations with jQuery → GSAP.',
-            'Enhanced analytics setup with Cloudflare & DoubleClick.',
+            'Enhanced existing ad animation prototypes by transitioning from jQuery-based animations to GSAP.',
+            'Assisted with analytics setup and tracking using Cloudflare and DoubleClick.',
           ],
         },
       ],
@@ -181,28 +172,21 @@ export class AboutComponent implements OnInit, AfterViewInit {
       isList: false,
       data: [
         {
-          description:
-            'In my free time, I enjoy a variety of activities that help me relax and unwind. Here are some of my interests:',
           interestsList: [
             {
-              text: 'Competitive Strategy Games (One Piece TCG, Magic: The Gathering) → ',
-              bold: 'strategic planning, adaptability',
+              text: 'Gaming',
             },
             {
-              text: 'Gaming Communities (Soulsborne, Baldur’s Gate 3) → ',
-              bold: 'problem-solving, persistence',
+              text: 'Dungeons & Dragons (5th Edition)',
             },
             {
-              text: 'Dungeons & Dragons →',
-              bold: ' teamwork, creativity, communication',
+              text: 'Trading Card Games',
             },
             {
-              text: 'Outdoor Activities with my Dog → ',
-              bold: ' balance, responsibility, stress relief',
+              text: 'Outdoor Activities with my Dog',
             },
             {
-              text: 'Anime & Manga Enthusiast → ',
-              bold: ' cultural appreciation, storytelling',
+              text: 'Anime & Manga',
             },
           ],
         },

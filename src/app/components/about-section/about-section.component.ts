@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -15,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-about-section',
   standalone: true,
-  imports: [NgFor, NgIf, LucideAngularModule],
+  imports: [LucideAngularModule],
   templateUrl: './about-section.component.html',
   styleUrl: './about-section.component.scss',
 })

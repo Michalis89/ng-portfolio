@@ -8,60 +8,72 @@
   </h3>
 
   <div class="relative border-l-4 border-blue-500 mt-6">
-    @if (isList) { @for (item of data; track item) {
-    <div class="ml-6 mb-8">
-      <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2.5"></div>
+    @if (isList) {
+      @for (item of data; track item) {
+        <div class="ml-6 mb-8">
+          <div
+            class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2.5"
+          ></div>
 
-      <p class="text-gray-400 text-sm flex items-center gap-1">
-        <lucide-angular
-          [img]="Calendar"
-          name="calendar"
-          class="w-5 h-5 text-gray-400"
-        ></lucide-angular>
+          <p class="text-gray-400 text-sm flex items-center gap-1">
+            <lucide-angular
+              [img]="Calendar"
+              name="calendar"
+              class="w-5 h-5 text-gray-400"
+            ></lucide-angular>
 
-        {{ item.year }}
-      </p>
-      <h4 class="text-xl font-semibold text-white">
-        {{ item.title }}
-      </h4>
-      @if(item.company || item.subtitle || item.provider){
-      <h3>
-        Provider:
-        <span class="text-blue-400">
-          {{ item.company || item.subtitle || item.provider }}
-        </span>
-      </h3>
+            {{ item.year }}
+          </p>
+          <h4 class="text-xl font-semibold text-white">
+            {{ item.title }}
+          </h4>
+          @if (item.subtitle || item.provider) {
+            <h3>
+              Provider:
+              <span class="text-blue-400">
+                {{ item.subtitle || item.provider }}
+              </span>
+            </h3>
+          }
+          @if (item.company) {
+            <h3>
+              Company:
+              <span class="text-blue-400">
+                {{ item.company }}
+              </span>
+            </h3>
+          }
+          @if (item.image) {
+            <img
+              [src]="item.image"
+              alt="Certification"
+              class="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
+            />
+          }
 
-      } @if(item.image){
-      <img
-        [src]="item.image"
-        alt="Certification"
-        class="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
-      />
+          <p class="mt-2 text-gray-300">{{ item.description }}</p>
+
+          @if (item.responsibilities?.length > 0) {
+            <ul class="mt-2 text-gray-400 text-sm list-disc list-outside pl-6">
+              @for (task of item.responsibilities; track $index) {
+                <li>{{ task }}</li>
+              }
+            </ul>
+          }
+        </div>
       }
+    } @else {
+      <div class="ml-6 mb-8">
+        <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2.5"></div>
 
-      <p class="mt-2 text-gray-300">{{ item.description }}</p>
-
-      @if (item.responsibilities?.length > 0) {
-      <ul class="mt-2 text-gray-400 text-sm list-disc list-outside pl-6">
-        @for (task of item.responsibilities; track $index) {
-        <li>{{ task }}</li>
-        }
-      </ul>
-      }
-    </div>
-    } } @else {
-    <div class="ml-6 mb-8">
-      <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2.5"></div>
-
-      <ul class="mt-2 text-gray-300 list-disc list-inside">
-        @for (interest of data[0]?.interestsList; track $index) {
-        <li>
-          {{ interest.text }}
-        </li>
-        }
-      </ul>
-    </div>
+        <ul class="mt-2 text-gray-300 list-disc list-inside">
+          @for (interest of data[0]?.interestsList; track $index) {
+            <li>
+              {{ interest.text }}
+            </li>
+          }
+        </ul>
+      </div>
     }
   </div>
 </div>

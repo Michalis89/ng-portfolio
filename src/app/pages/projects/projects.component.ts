@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+﻿import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -61,9 +61,19 @@ export class ProjectsComponent implements OnInit {
       category: 'React',
     },
     {
+      title: 'Event Loop Visualizer',
+      description:
+        'An interactive, step-by-step Event Loop visualizer that demonstrates how sync code, microtasks, and macrotasks flow through the JavaScript runtime. Includes a toy syntax for beginners and a Custom JS mode with capture and replay.',
+      image: './projects/event-loop-visualizer.png',
+      stack: ['HTML', 'CSS', 'JavaScript'],
+      live: 'https://event-loop-visualizer-seven.vercel.app/',
+      code: 'https://github.com/Michalis89/Event-Loop-Visualizer',
+      category: 'JavaScript',
+    },
+    {
       title: 'Interactive Quiz App',
       description:
-        'This is a Neon-Themed Interactive Gaming Quiz App built using HTML, CSS, and JavaScript. The quiz dynamically fetches gaming-related questions from an API and features real-time score tracking, sound effects, and animations.',
+        'An interactive, step-by-step Event Loop visualizer that demonstrates how sync code, microtasks, and macrotasks flow through the JavaScript runtime. Includes a toy syntax for beginners and a Custom JS mode with capture and replay.',
       image: './projects/interactive-quiz.png',
       stack: ['HTML', 'CSS', 'JavaScript', 'GSAP'],
       live: 'https://portfolio-interactive-quiz-app.vercel.app/',

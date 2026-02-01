@@ -22,13 +22,13 @@ export class ProjectsComponent implements OnInit {
 
   projects = [
     {
-      title: 'Platinum Hunters GR',
+      title: 'Hobbistas Hub',
       description:
-        'Platinum Hunters GR - A full-stack web platform for tracking and managing gaming progress, built with Next.js, Supabase, and a focus on scalable data models and UI state.',
-      image: './projects/platinum-hunters.png',
+        'Hobbistas is a Greek-first hobby hub that unifies games, anime, manga, movies, TV, and books under a single backlog, activity, and editorial experience.',
+      image: './projects/hobbistas-hub.png',
       stack: ['Next.js', 'TypeScript ', 'Tailwind', 'Supabase'],
-      live: 'https://platinum-hunters-gr.vercel.app',
-      code: 'https://github.com/Michalis89/Platinum-Hunters-GR',
+      live: 'https://hobbistas-hub.com',
+      code: 'https://github.com/Michalis89/hobbistas-Hub',
       category: 'Next',
     },
     {
@@ -122,4 +122,3 @@ export class ProjectsComponent implements OnInit {
     });
   }
 }
-
